@@ -5,14 +5,6 @@
     --white-color: #e7e7e7;
 }
 
-.odd{
-    font-weight: 100;
-}
-
-.even{
-    font-weight: bold;
-}
-
 body{
     color: var(--dark-color);
 }
@@ -28,6 +20,11 @@ footer{
 
 h1,h2,h3,h4,h5,h6{
     color: var(--primary-color);
+}
+
+.text-raleway{
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
 }
 
 .bsicon{
