@@ -1,55 +1,47 @@
-
-//Get starting and ending values
-function getValues () {
-    let startValue = document.getElementById("startValue").value;
-    let endValue = document.getElementById("endValue").value;
+//Get string
+function getValue(){
     
+    let userString = document.getElementById("userString").value;
 
-    //Parse inputs into integers
-    startValue = parseInt(startValue);
-    endValue = parseInt(endValue);
+    return userString;
 
-    
-    if(Number.isInteger(startValue) && Number.isInteger(endValue)){
-        let numbers = generateNumbers(startValue, endValue);
-        displayNumbers(numbers);
-    }else{
-        alert("You must enter integers");
-    }
-
-    
 }
 
-//Generate numbers from startValue to endValue
-function generateNumbers(startValue, endValue){
-    let numbers = [];
+//Reverse string
+function reverseString(userString){
 
-    for (let i = startValue; i <= endValue; i++) {
-        numbers.push(i);
+    let finalString = [];
+
+    for (let index = userString.length - 1; index >= 0; index--) {
+        finalString += userString[index];
+        
     }
 
-    return numbers;
+    return finalString;
 }
 
-//Display the numbers and mark the even numbers bold
-function displayNumbers(numbers) {
-    let templateRow = "";
-    
-    for (let i = 0; i < numbers.length; i++) {
-        let number = numbers[i];
+//Display string
+function displayString(outputString){
 
-        let className = "even";
-        if(number % 2 == 0){
-            className
-        }else{
+    //Display result
+    document.getElementById("msg").innerHTML = `Your string reversed is: ${outputString}`
 
-            className = "odd";
-            
-        }
+    //Display alert
+    document.getElementById("alert").classList.remove("invisible");
 
-        templateRow += `<tr><td class="${className}">${number}</td><tr>`;
-                
-    }
+}
 
-    document.getElementById("results").innerHTML = templateRow;
+function reverseCall(){
+    //Set Alert to invisible as a precaution
+    document.getElementById("alert").classList.add("invisible");
+
+    //Get the string to reverse
+    let userString = getValue();
+
+    //Reverse the string
+    let outputString = [];
+    outputString = reverseString(userString);
+
+    //Display the reversed string to user
+    displayString(outputString);
 }

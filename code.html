@@ -1,36 +1,33 @@
 <!doctype html>
 <html lang="en" class="h-100">
 
-    <head>
-        <title>Mirror: A Coding Project By Michael Loerop</title>
-        <link rel="icon" type="image/x-icon" href="/img/Mike-Loerop-Logo-Favicon.png">
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <title>Mirror: A Coding Project By Michael Loerop</title>
+    <link rel="icon" type="image/x-icon" href="/img/Mike-Loerop-Logo-Favicon.png">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <!-- Stylesheets -->
+    <link href="/css/site.css" rel="stylesheet">
+    <link href="/css/prism.css" rel="stylesheet">
+
     
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/f434149863.js" crossorigin="anonymous"></script>
     
-        <!-- Stylesheets -->
-        <link href="/css/site.css" rel="stylesheet">
     
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    
-        <!-- Font Awesome -->
-        <script src="https://kit.fontawesome.com/f434149863.js" crossorigin="anonymous"></script>
-        
-    </head>
+</head>
 
 <body class="d-flex flex-column h-100">
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html"><img src="/img/Looper-Logo-white.png" alt="Looper Logo" height="20px" class="d-flex "></a>
+        <a class="navbar-brand text-raleway" href="index.html">MIRROR</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,7 +45,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/MikeLoerop/Javascript_Looper" target="_blank" >Github</a>
+                    <a class="nav-link" href="https://github.com/MikeLoerop/Javascript_Mirror" target="_blank" >Github</a>
                 </li>
             </ul>
         </div>
@@ -65,61 +62,53 @@
                     <pre class="line-numbers">
                         <code class="language-javascript">
                            
-//Get starting and ending values
-function getValues () {
-    let startValue = document.getElementById("startValue").value;
-    let endValue = document.getElementById("endValue").value;
-    
-
-    //Parse inputs into integers
-    startValue = parseInt(startValue);
-    endValue = parseInt(endValue);
-
-    
-    if(Number.isInteger(startValue) && Number.isInteger(endValue)){
-        let numbers = generateNumbers(startValue, endValue);
-        displayNumbers(numbers);
-    }else{
-        alert("You must enter integers");
-    }
-
-    
-}
-
-//Generate numbers from startValue to endValue
-function generateNumbers(startValue, endValue){
-    let numbers = [];
-
-    for (let i = startValue; i <= endValue; i++) {
-        numbers.push(i);
-    }
-
-    return numbers;
-}
-
-//Display the numbers and mark the even numbers bold
-function displayNumbers(numbers) {
-    let templateRow = "";
-    
-    for (let i = 0; i < numbers.length; i++) {
-        let number = numbers[i];
-
-        let className = "even";
-        if(number % 2 == 0){
-            className
-        }else{
-
-            className = "odd";
-            
-        }
-        //This does not render correctly on front-end as it contains html.
-        //See repository for full code.
-        templateRow += `<tr><td class="${className}">${number}</td><tr>`;
-                
-    }
-
-    document.getElementById("results").innerHTML = templateRow;
-}
+                            //Get string
+                            function getValue(){
+                                
+                                let userString = document.getElementById("userString").value;
+                            
+                                return userString;
+                            
+                            }
+                            
+                            //Reverse string
+                            function reverseString(userString){
+                            
+                                let finalString = [];
+                            
+                                for (let index = userString.length - 1; index >= 0; index--) {
+                                    finalString += userString[index];
+                                    
+                                }
+                            
+                                return finalString;
+                            }
+                            
+                            //Display string
+                            function displayString(outputString){
+                            
+                                //Display result
+                                document.getElementById("msg").innerHTML = `Your string reversed is: ${outputString}`
+                            
+                                //Display alert
+                                document.getElementById("alert").classList.remove("invisible");
+                            
+                            }
+                            
+                            function reverseCall(){
+                                //Set Alert to invisible as a precaution
+                                document.getElementById("alert").classList.add("invisible");
+                            
+                                //Get the string to reverse
+                                let userString = getValue();
+                            
+                                //Reverse the string
+                                let outputString = [];
+                                outputString = reverseString(userString);
+                            
+                                //Display the reversed string to user
+                                displayString(outputString);
+                            }
                         </code>
                     </pre>
                </div>
